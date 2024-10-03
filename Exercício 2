@@ -7,7 +7,7 @@ HTML
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Exercicio HTML" content="HTML">
     <link rel="stylesheet" href="styles.css">
-    <h1>Tela de Login</h1>
+    <h1>Gerador de Lista</h1>
 </head>
 <body>
     <h3>Digite um número:</h3>
