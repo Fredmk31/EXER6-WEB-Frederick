@@ -1,0 +1,120 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Exercicio HTML" content="HTML">
+    <link rel="stylesheet" href="styles.css">
+    <h1>Tela de Login</h1>
+</head>
+<body>
+    <h3>Digite um número:</h3>
+    <input type="number" id="numero" placeholder="Número" min="0" required> <br><br>
+    
+    <h3>Digite um nome:</h3>
+    <input type="text" id="nome" placeholder="Nome" required> <br><br>
+    
+    <button onclick="verificarNome()">Enviar</button>
+    
+    <div id="mensagem" class="mensagem"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+=====================================
+
+CSS
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px; /* Limita a largura do formulário */
+    margin-left: 50px; /* Alinhamento à esquerda */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    color:black ;
+    margin-bottom: 10px;
+}
+
+input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20%; /* Campo ocupa toda a largura do contêiner */
+    box-sizing: border-box; /* Inclui padding e border na largura total */
+}
+
+button {
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 20%; /* Botão ocupa toda a largura do contêiner */
+}
+
+button:hover {
+    background-color: blue;
+}
+
+.mensagem {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+==========================================
+
+JAVASCRIPT
+
+function verificarNome() {
+    const numeroInput = document.getElementById('numero').value;
+    const nomeInput = document.getElementById('nome').value;
+    const mensagemDiv = document.getElementById('mensagem');
+    let numero = parseInt(numeroInput);
+
+    // Verifica se o número é válido
+    if (isNaN(numero)) {
+        mensagemDiv.textContent = "Por favor, insira um número válido.";
+        return;
+    }
+
+    // Verifica se o número é positivo ou negativo
+    if (numero < 0) {
+        mensagemDiv.textContent = "O número é negativo.";
+    } else {
+        let resultado = "<ol>"; // Começa a lista ordenada
+        let i = 0;
+
+        // Usa um loop while para repetir o nome
+        while (i < numero) {
+            resultado += `<li>${nomeInput}</li>`; // Adiciona o nome como um item da lista
+            i++; // Incrementa o contador
+        }
+        resultado += "</ol>"; // Fecha a lista
+
+        // Exibe o resultado como uma lista ordenada
+        mensagemDiv.innerHTML = resultado;
+    }
+}
